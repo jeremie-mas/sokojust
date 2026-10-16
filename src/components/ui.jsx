@@ -3,21 +3,30 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Phone, Plus, X, Check } from 'lucide-react'
 import { CONTACT, FAQ, waLink } from '../data'
 
-export function LogoMark({ size = 22, color = '#f5b700', cut = '#16150f' }) {
+/**
+ * Logo SKJ redessiné en SVG d'après le logo officiel (maison + SKJ + bandeau « SO KO JUST »).
+ * Couleur via `currentColor`. `full` ajoute le texte du bandeau (lisible seulement en grand).
+ * À remplacer par le fichier vectoriel officiel dès qu'il est disponible.
+ */
+export function SkjLogo({ full = false, className = '', title }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
-      <path d="M8 54 L32 10 L56 54 Z" fill={color} />
-      <rect x="25" y="38" width="14" height="16" fill={cut} />
+    <svg className={className} viewBox="340 120 1240 900" role={title ? 'img' : undefined} aria-label={title} aria-hidden={title ? undefined : true} fill="currentColor">
+      <polygon points="352,470 604,149 640,199 427,472" />
+      <polygon points="612,136 1139,136 1382,472 857,472" />
+      <rect x="459" y="445" width="58" height="562" />
+      <rect x="459" y="830" width="1106" height="177" />
+      <text x="822" y="806" fontFamily="Arial, Helvetica, sans-serif" fontWeight="700" fontSize="420" textLength="744" lengthAdjust="spacingAndGlyphs">SKJ</text>
+      {full && (
+        <text x="836" y="979" fill="#fff" fontFamily="'Archivo', Arial, sans-serif" fontWeight="800" fontSize="168" textLength="690" lengthAdjust="spacingAndGlyphs">SO KO JUST</text>
+      )}
     </svg>
   )
 }
 
-export function Logo({ dark = false }) {
+export function Logo() {
   return (
     <Link to="/" className="logo" aria-label="SOKOJUST — accueil">
-      <span className="logo-mark">
-        <LogoMark color={dark ? '#16150f' : '#f5b700'} cut={dark ? '#f5b700' : '#16150f'} />
-      </span>
+      <SkjLogo className="logo-mark" />
       <span className="logo-text">
         SOKOJUST
         <small>BTP · SANITAIRE · SOLAIRE</small>

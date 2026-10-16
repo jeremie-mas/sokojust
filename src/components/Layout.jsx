@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Clock, MapPin, Menu, Phone, X, ArrowRight, Facebook, Instagram, Linkedin } from 'lucide-react'
 import { CONTACT, METIERS, waLink } from '../data'
-import { Logo, WhatsAppIcon } from './ui'
+import { Logo, SkjLogo, WhatsAppIcon } from './ui'
 
 const LINKS = [
   { to: '/services', label: 'Nos métiers' },
@@ -48,7 +48,7 @@ function Header() {
 
       <div className={`drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
         <div className="drawer-top">
-          <Logo dark />
+          <Logo />
           <button aria-label="Fermer le menu" onClick={() => setOpen(false)}><X size={30} /></button>
         </div>
         <nav>
@@ -70,7 +70,7 @@ function Footer() {
       <div className="wrap">
         <div className="footer-grid">
           <div>
-            <Logo />
+            <Link to="/" aria-label="SOKOJUST — accueil"><SkjLogo full className="footer-logo" title="SKJ — SO KO JUST" /></Link>
             <p style={{ marginTop: 20, maxWidth: '34ch' }}>
               Votre distributeur de confiance pour le BTP, le sanitaire et le solaire au Togo. Facilitateur de projets au quotidien.
             </p>
